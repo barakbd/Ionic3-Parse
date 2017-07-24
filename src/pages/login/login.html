@@ -1,0 +1,47 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding>
+
+  <form [formGroup]="loginForm" (submit)="login()">
+    <!-- responsive  divs-->
+    <div class="row responsive-md">
+      <div class="col col-50 col-offset-25">
+        <!-- responsive  divs -->
+
+        <!-- EMAIL -->
+        <ion-item>
+          <ion-label floating color="grayed">*Email</ion-label>
+          <ion-input formControlName="email" type="email" [class.invalid]="loginForm.controls.email.invalid && loginForm.controls.dirty"></ion-input>
+        </ion-item>
+        <!-- email error message -->
+        <ion-item no-lines *ngIf="loginForm.controls.email.invalid  && loginForm.controls.email.dirty">
+          <p ion-text color="danger" text-wrap>Please use correct email format, e.g.:someone@domain.com.</p>
+        </ion-item>
+
+        <!-- PASSWORD -->
+        <ion-item>
+          <ion-label floating color="grayed">*Password</ion-label>
+          <ion-input formControlName="password" type="password" [class.invalid]="loginForm.controls.password.invalid && loginForm.controls.password.dirty"></ion-input>
+        </ion-item>
+        <!-- password error message -->
+        <ion-item no-lines *ngIf="loginForm.controls.password.invalid  && loginForm.controls.password.dirty">
+          <p ion-text color="danger" text-wrap>Password must be 8 -20 characters, start with a letter and contain a symbol</p>
+        </ion-item>
+
+        <!-- BUTTONS -->
+        <button ion-button block [disabled]="loginForm.invalid" type="submit">Login</button>
+
+        <!-- responsive  divs-->
+      </div>
+    </div>
+    <!-- responsive  divs-->
+
+  </form>
+  <button ion-button block clear (click)="goToSignup()">Don't have an account? Signup</button>
+
+</ion-content>

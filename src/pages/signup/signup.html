@@ -1,0 +1,81 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content id="signup" padding>
+
+  <form [formGroup]="signupForm" (submit)="signup()">
+    <!-- responsive  divs-->
+    <div class="row responsive-md">
+      <div class="col col-50 col-offset-25">
+        <!-- responsive  divs -->
+
+        <!-- FIRST NAME -->
+        <ion-item>
+          <ion-label floating color="grayed">*First Name</ion-label>
+          <ion-input #firstName formControlName="first_name" type="text" [class.invalid]="signupForm.controls.first_name.valid && signupForm.controls.first_name.dirty"></ion-input>
+        </ion-item>
+        <!-- first_name error message -->
+        <ion-item no-lines *ngIf="signupForm.controls.first_name.invalid  && signupForm.controls.first_name.dirty">
+          <p ion-text color="danger" text-wrap>First name should contain only letters and contain at least 3 characters.</p>
+        </ion-item>
+
+        <!-- LAST NAME -->
+        <ion-item>
+          <ion-label floating color="grayed">*Last Name</ion-label>
+          <ion-input #lastName formControlName="last_name" type="text" [class.invalid]="signupForm.controls.last_name.invalid && signupForm.controls.last_name.dirty"></ion-input>
+        </ion-item>
+        <!-- last_name error message -->
+        <ion-item no-lines *ngIf="signupForm.controls.last_name.invalid  && signupForm.controls.last_name.dirty">
+          <p ion-text color="danger" text-wrap>Last name should contain only letters and contain at least 3 characters.</p>
+        </ion-item>
+
+        <!-- EMAIL -->
+        <ion-item>
+          <ion-label floating color="grayed">*Email</ion-label>
+          <ion-input #email formControlName="email" type="email" [class.invalid]="signupForm.controls.email.invalid && signupForm.controls.dirty"></ion-input>
+        </ion-item>
+        <!-- email error message -->
+        <ion-item no-lines *ngIf="signupForm.controls.email.invalid  && signupForm.controls.email.dirty">
+          <p ion-text color="danger" text-wrap>Please use correct email format, e.g.:someone@domain.com.</p>
+        </ion-item>
+
+        <div formGroupName="passwords">
+
+          <!-- PASSWORD -->
+          <ion-item>
+            <ion-label floating color="grayed">*Password</ion-label>
+            <ion-input #password formControlName="password" type="password" [class.invalid]="signupForm.controls.passwords.controls.password.invalid && signupForm.controls.passwords.controls.password.dirty"></ion-input>
+          </ion-item>
+          <!-- password error message -->
+          <ion-item no-lines *ngIf="signupForm.controls.passwords.controls.password.invalid  && signupForm.controls.passwords.controls.password.dirty">
+            <p ion-text color="danger" text-wrap>Password must be 8 -20 characters, start with a letter and contain a symbol</p>
+          </ion-item>
+
+          <!-- REPEAT PASSWORD -->
+          <ion-item>
+            <ion-label floating color="grayed">*Repeat Password</ion-label>
+            <ion-input #repeatPassword formControlName="repeat_password" type="password" [class.invalid]="signupForm.controls.passwords.invalid && signupForm.controls.passwords.dirty"></ion-input>
+          </ion-item>
+          <!-- repeat_password error message -->
+          <ion-item no-lines *ngIf="signupForm.controls.passwords.invalid  && signupForm.controls.passwords.controls.repeat_password.dirty">
+            <p ion-text color="danger" text-wrap>Passwords don't match.</p>
+          </ion-item>
+        </div>
+        <!-- formGroupName="passwords" -->
+
+        <!-- BUTTONS -->
+        <button ion-button block [disabled]="signupForm.invalid" type="submit">Signup</button>
+        <button ion-button block clear (click)="goToLogin()">Already have an account? Login</button>
+
+        <!-- responsive  divs-->
+      </div>
+    </div>
+    <!-- responsive  divs-->
+
+  </form>
+
+</ion-content>

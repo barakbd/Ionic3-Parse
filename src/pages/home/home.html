@@ -1,14 +1,32 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-menu [content]="content">
+  <!-- <ion-header>
+     <ion-toolbar>
+      <ion-title>{{name}} {{company}}</ion-title>
+    </ion-toolbar> 
+  </ion-header> -->
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+  <ion-content>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="" />
+        </ion-avatar>
+        <h3>{{username}}</h3>
+        <p>{{company}}</p>
+      </ion-item> 
+      <div *ngFor="let p of pages">
+        <button menuClose ion-item *ngIf="p.page" (click)="openPage(p.component, p.title)">
+          <ion-icon [name]="p.icon" [color]="light" item-start></ion-icon>
+          {{p.title}}
+        </button>
+        <ion-list-header *ngIf="!p.page">
+          {{p.title}}
+        </ion-list-header>
+      </div>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
